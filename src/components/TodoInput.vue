@@ -37,7 +37,7 @@ export default {
       let el = this.$refs.inputField;
       if (el === null) return;
       console.log(el.getBoundingClientRect().top);
-      if (el.getBoundingClientRect().top <= 20) {
+      if (el.getBoundingClientRect().top <= 60) {
         el.classList.add("sticky");
       } else {
         el.classList.remove("sticky");
@@ -56,7 +56,7 @@ div {
 .sticky {
   background-color: red;
   position: sticky;
-  top:20px;
+  top:60px;
   right:50px;
 }
 </style>

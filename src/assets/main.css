@@ -48,7 +48,6 @@ a,
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
 input{
   padding: 10px;

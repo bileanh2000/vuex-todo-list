@@ -1,9 +1,13 @@
 <template lang="">
+  <SideBar :isOpenProp="isOpen" @close="isOpen = !isOpen" />
   <header>
     <div class="header-wrapper">
       <ul>
-        <li>Home</li>
-        <li>About</li>
+        <li>
+          <button class="btn btn-secondary" @click="handleOpen">
+            Open SideBar
+          </button>
+        </li>
       </ul>
       <h2 class="logo">Vuex</h2>
       <ul>
@@ -26,7 +30,13 @@
 </template>
 <script>
 import { mapState, mapMutations, mapGetters } from "vuex";
+import SideBar from "./SideBar.vue";
 export default {
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
   computed: {
     ...mapState(["todos"]),
     ...mapGetters(["todosNotDone", "isAuthenticated"]),
@@ -34,12 +44,21 @@ export default {
     //   this.$store.getters.isAuthenticated
     // }
   },
+
+  components: { SideBar },
   // methods:{
   //   loginOrLogout(){
   //     this.$store.commit('TOGGLE_AUTH')
   //   }
   // }
-  methods: mapMutations(["TOGGLE_AUTH"]),
+  methods: {
+    ...mapMutations(["TOGGLE_AUTH"]),
+    handleOpen() {
+      this.isOpen = true;
+      // console.log("click worked");
+      // console.log("s", this.isOpen);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -47,6 +66,9 @@ header {
   background-color: #c74b50;
   padding: 10px;
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 998;
 }
 
 ul,
